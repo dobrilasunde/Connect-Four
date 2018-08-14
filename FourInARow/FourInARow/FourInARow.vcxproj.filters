@@ -10,6 +10,7 @@
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Board.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp" />
@@ -20,5 +21,6 @@
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="MoveComponent.hpp" />
     <ClInclude Include="CircleComponent.hpp" />
+    <ClInclude Include="Board.hpp" />
   </ItemGroup>
 </Project>

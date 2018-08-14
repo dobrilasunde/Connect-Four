@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Math.hpp"
+#include "Board.hpp"
 
 class Game
 {
@@ -41,4 +42,6 @@ private:
 	Uint32 mTicksCount;
 	bool mIsRunning;
 	bool mUpdatingActors;
+
+	BoardState mBoardState;
 };

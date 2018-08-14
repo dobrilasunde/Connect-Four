@@ -56,6 +56,35 @@ void Game::RunLoop()
 
 void Game::ProcessInput()
 {
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			mIsRunning = false;
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			if (event.button.button == SDL_BUTTON_LEFT && !mBoardState.IsTerminal())
+			{
+				int col = event.button.x - 64;
+				if (col >= 0)
+				{
+					col /= 128;
+					if (col <= 6)
+					{
+						bool playerMoved = TryPlayerMove(&mBoardState, col);
+						if (playerMoved && !mBoardState.IsTerminal())
+						{
+							CPUMove(&mBoardState);
+						}
+					}
+				}
+			}
+			break;
+		}
+	}
+
 	const Uint8* keyState = SDL_GetKeyboardState(NULL);
 	if (keyState[SDL_SCANCODE_ESCAPE])
 	{
@@ -119,6 +148,24 @@ void Game::GenerateOutput()
 		sprite->Draw(mRenderer);
 	}
 
+	DrawTexture(GetTexture("Assets/Board.png"), Vector2(512.0f, 384.0f), Vector2(896.0f, 768.0f));
+
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 7; j++)
+		{
+			Vector2 pos(j * 128.0f + 128.0f, i * 128.0f + 64.0f);
+			if (mBoardState.mBoard[i][j] == BoardState::Yellow)
+			{
+				DrawTexture(GetTexture("Assets/YellowPiece.png"), pos, Vector2(128.0f, 128.0f));
+			}
+			else if (mBoardState.mBoard[i][j] == BoardState::Red)
+			{
+				DrawTexture(GetTexture("Assets/RedPiece.png"), pos, Vector2(128.0f, 128.0f));
+			}
+		}
+	}
+
 	SDL_RenderPresent(mRenderer);
 
 }
@@ -174,7 +221,14 @@ SDL_Texture* Game::GetTexture(const std::string& fileName)
 
 void Game::DrawTexture(SDL_Texture* texture, const Vector2& pos, const Vector2& size)
 {
+	SDL_Rect r;
 
+	r.w = static_cast<int>(size.x);
+	r.h = static_cast<int>(size.y);
+	r.x = static_cast<int>(pos.x) - r.w / 2;
+	r.y = static_cast<int>(pos.y) - r.h / 2;
+
+	SDL_RenderCopy(mRenderer, texture, nullptr, &r);
 }
 
 void Game::Shutdown()
