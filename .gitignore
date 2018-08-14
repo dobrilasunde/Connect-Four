@@ -1,0 +1,10 @@
+*.db
+*.user
+*.opendb
+Debug/
+Release/
+.DS_Store
+*xcuserdatad*
+*.xccheckout
+*.stackdump
+.vs

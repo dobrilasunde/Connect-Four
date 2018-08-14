@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="CircleComponent.cpp" />
+    <ClCompile Include="Game.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Math.hpp" />
+    <ClInclude Include="Actor.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="SpriteComponent.hpp" />
+    <ClInclude Include="Random.hpp" />
+    <ClInclude Include="MoveComponent.hpp" />
+    <ClInclude Include="CircleComponent.hpp" />
+  </ItemGroup>
+</Project>
