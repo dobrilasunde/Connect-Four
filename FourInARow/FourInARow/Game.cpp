@@ -4,6 +4,7 @@
 #include "Actor.hpp"
 #include "SpriteComponent.hpp"
 #include "Random.hpp"
+#include<iostream>
 
 Game::Game():mWindow(nullptr), mRenderer(nullptr), mIsRunning(true), mUpdatingActors(false) {}
 
@@ -77,6 +78,10 @@ void Game::ProcessInput()
 						if (playerMoved && !mBoardState.IsTerminal())
 						{
 							CPUMove(&mBoardState);
+						}
+						if (mBoardState.IsTerminal())
+						{
+							std::cout << "Game over!" << std::endl;
 						}
 					}
 				}
