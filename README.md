@@ -1,2 +1,2 @@
-# Four-In-A-Row-Game
-Four-In-A-Row game created with C++ and SDL2
+# Connect-Four-Game
+Connect Four game created with C++ and SDL2
